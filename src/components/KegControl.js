@@ -82,6 +82,47 @@ class KegControl extends React.Component {
       ]
     }
   }
+
+  renderTableDate() {
+    return this.state.kegList.map((keg, index) => {
+      const { name, brewery, abv, origin, pintPrice, kegLevel, id } = keg
+      return (
+        <tr key={id}>
+          <td>{name}</td>
+          <td>{brewery}</td>
+          <td>{abv}</td>
+          <td>{origin}</td>
+          <td>{pintPrice}</td>
+          <td>{kegLevel}</td>
+          <td>{id}</td>
+        </tr>
+      )
+    })
+  }
+
+  // renderTableHeader() {
+  //   let header = Object.keys(this.state.kegList[0])
+  //   return header.map((key, index) => {
+  //     return <th
+  //   })
+  // }
+
+  render() {
+    return (
+      <div>
+        <h1 id='title'>BEER SELECTION</h1>
+        <table id='kegList'>
+          <tbody>
+            {this.renderTableData()}
+          </tbody>
+        </table>
+      </div>
+    )
+  }
+
+
+
+
 }
 
 export default KegControl;
