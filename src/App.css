@@ -1,3 +1,8 @@
+body{
+  padding: 5%;
+}
+
+
 #kegList {
   text-align: center;
   border-collapse: collapse; 
