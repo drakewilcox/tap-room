@@ -79,6 +79,15 @@ class KegControl extends React.Component {
           kegLevel: 124,
           id: "7707708"
         },
+        {
+          name: "Saison Dupont",
+          brewery: "Dupont",
+          abv: "6.5%",
+          origin: "BEL",
+          pintPrice: 6, 
+          kegLevel: 124,
+          id: "7707709"
+        },
       ]
     }
   }
@@ -90,7 +99,7 @@ class KegControl extends React.Component {
         <tr key={id}>
           <td>{name}</td>
           <td>{brewery}</td>
-          <td>{pintPrice}</td>
+          <td>${pintPrice}</td>
           <td>{abv}</td>
           <td>{origin}</td>
         </tr>
@@ -98,21 +107,16 @@ class KegControl extends React.Component {
     })
   }
 
-  // renderTableHeader() {
-  //   r
-  //   })
-  // }
-
   render() {
     return (
       <div className="menu">
         <h1 id='title'>BEER SELECTION</h1>
         <table id='kegList'>
           <tbody>
-            <tr>
+            <tr id="tableHead">
               <th>Name</th>
               <th>Brewery</th>
-              <th>Price</th>
+              <th>Price (16oz)</th>
               <th>ABV</th>
               <th>Origin</th>
             </tr>
