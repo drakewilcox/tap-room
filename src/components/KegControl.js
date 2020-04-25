@@ -1,4 +1,5 @@
 import React from 'react';
+import NewKegForm from './KegFormControl/NewKegForm';
 
 class KegControl extends React.Component {
 
