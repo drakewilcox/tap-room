@@ -93,6 +93,19 @@ class KegControl extends React.Component {
     }
   }
 
+  // handleKegSelection = (id) => {
+  //   const selectedKeg = this.state.albumList.filter(album => album.id === id)[0];
+  //   this.setState({
+  //     currentSelectedKeg: selectedKeg,
+  //   })
+  // }
+
+  handleAddingNewKegToList = (newKeg) => {
+    const newMasterKegList = this.state.kegList.concat(newKeg);
+    this.setState({kegList: newMasterKegList});
+  }
+
+
   renderTableData() {
     return this.state.kegList.map((keg, index) => {
       const { name, brewery, abv, origin, pintPrice, id } = keg
@@ -108,8 +121,19 @@ class KegControl extends React.Component {
     })
   }
 
+
+  // currentPage = () => {
+  //   if(this.state.showHomePage) {
+  //     return{
+       
+  //     }
+  //   }
+  // }
+
   render() {
     return (
+      <React.Fragment>
+      
       <div className="menu">
         <h1 id='title'>BEER SELECTION</h1>
         <table id='kegList'>
@@ -125,6 +149,10 @@ class KegControl extends React.Component {
           </tbody>
         </table>
       </div>
+      <NewKegForm 
+        onNewKegFormCreation={this.handleAddingNewKegToList}
+      />
+      </React.Fragment>
     )
   }
 

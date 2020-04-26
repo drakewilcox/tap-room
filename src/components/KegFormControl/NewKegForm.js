@@ -37,7 +37,7 @@ function NewKegForm(props) {
           origin='origin'
           placeholder='Origin'/>
         <input
-          type='text'
+          type='number'
           pintPrice='pintPrice'
           placeholder='Pint Price'/>
 
