@@ -11,7 +11,7 @@ function NewKegForm(props) {
       brewery: event.target.brewery.value,
       abv: event.target.abv.value, 
       origin: event.target.origin.value,
-      pintPrice: event.target.origin.value,
+      pintPrice: event.target.pintPrice.value,
       kegLevel: 124,
       id: v4()
     })
@@ -19,30 +19,31 @@ function NewKegForm(props) {
 
     return (
       <React.Fragment>
-      <form onSubmit={ handleNewKegFormSubmission }>
-        <input
-          type='text'
-          name='name'
-          placeholder='Beer Name'/>
-        <input
-          type='text'
-          brewery='brewery'
-          placeholder='Brewery'/>
-        <input
-          type='text'
-          abv='abv'
-          placeholder='ABV'/>
-        <input
-          type='text'
-          origin='origin'
-          placeholder='Origin'/>
-        <input
-          type='number'
-          pintPrice='pintPrice'
-          placeholder='Pint Price'/>
-
-        <button type='submit'>ADD NEW KEG</button>        
-      </form>
+      <footer>
+        <form onSubmit={ handleNewKegFormSubmission }>
+          <input
+            type='text'
+            name='name'
+            placeholder='Beer Name'/>
+          <input
+            type='text'
+            name='brewery'
+            placeholder='Brewery'/>
+          <input
+            type='text'
+            name='abv'
+            placeholder='ABV'/>
+          <input
+            type='text'
+            name='origin'
+            placeholder='Origin'/>
+          <input
+            type='text'
+            name='pintPrice'
+            placeholder='Pint Price'/>
+          <button type='submit'>ADD NEW KEG</button>        
+        </form>
+      </footer>
     </React.Fragment>
   );
 }
