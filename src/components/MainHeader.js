@@ -2,9 +2,9 @@ import React from 'react';
 
 function MainHeader() {
   return (
-    <div>
-      <h1>Dracobian Draught's</h1>
-    </div>
+    <header>
+      <h1>Dracobian's Draughts</h1>
+    </header>
   )
 }
 
