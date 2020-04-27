@@ -30,8 +30,6 @@ h3 {
    
     float: left;
     width: 100%;
-    /* margin-top: 125px; */
- 
   }
   .main {
     float: left;
@@ -54,11 +52,8 @@ h3 {
 
 .wrapper > * {
   background-color: rgb(175, 180, 190);
-  /* color: #fff; */
   border-radius: 5px;
   padding: 20px;
-  /* font-size: 150%; */
- 
   margin-bottom: 10px;
 }
 @supports (display: grid) {
