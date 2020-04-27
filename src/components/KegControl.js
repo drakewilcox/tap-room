@@ -98,6 +98,7 @@ class KegControl extends React.Component {
   }
 
   handleAddingNewKegToList = (newKeg) => {
+    console.log(newKeg.name);
     const newKegList = this.state.kegList.concat(newKeg);
     this.setState({kegList: newKegList});
     this.setState({showHomePage: true});
@@ -111,6 +112,14 @@ class KegControl extends React.Component {
     });
   }
 
+  handleSalesReport = (salesReport) => {
+    console.log(salesReport.pintsSold)
+    const selectedKeg = this.state.kegList.filter(keg => keg.id === salesReport.id)[0];
+    const updatedKeg = {...selectedKeg, kegLevel: salesReport.pintsSold}
+    this.setState({
+      currentSelectedKeg: updatedKeg
+    });
+  }
 
   renderTableData() {
     return this.state.kegList.map((keg, index) => {
@@ -151,7 +160,9 @@ class KegControl extends React.Component {
         </main>
         </React.Fragment>,
         sideBar: <Beer
-          beer = {this.state.currentSelectedKeg}/>,
+          beer = {this.state.currentSelectedKeg}
+          onNewSalesReport = {this.handleSalesReport}
+          />,
         footer: <NewKegForm 
         onNewKegFormCreation = {this.handleAddingNewKegToList}/>
       } 
