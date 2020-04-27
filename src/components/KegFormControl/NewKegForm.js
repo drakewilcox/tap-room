@@ -20,6 +20,7 @@ function NewKegForm(props) {
     return (
       <React.Fragment>
       <footer>
+        <h3>Add A New Keg:</h3>
         <form onSubmit={ handleNewKegFormSubmission }>
           <input
             type='text'

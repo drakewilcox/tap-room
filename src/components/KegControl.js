@@ -116,7 +116,9 @@ class KegControl extends React.Component {
     console.log(salesReport.pintsSold)
     const selectedKeg = this.state.kegList.filter(keg => keg.id === salesReport.id)[0];
     const updatedKeg = {...selectedKeg, kegLevel: salesReport.pintsSold}
+    const oldKegs = this.state.kegList.filter(keg => keg.id !== salesReport.id);
     this.setState({
+      kegList: [...oldKegs, updatedKeg],
       currentSelectedKeg: updatedKeg
     });
   }
@@ -196,35 +198,6 @@ class KegControl extends React.Component {
       </React.Fragment>
     )
   }
-
-  // render() {
-  //   let currentlyVisibleState = null;
-  //   if (this.state.showHomePage) {
-  //   currentlyVisibleState = <NewKegForm 
-  //   onNewKegFormCreation = {this.handleAddingNewKegToList}/>
-  //   }
-   
-  //   return (
-  //     <React.Fragment>
-  //     <div className="menu">
-  //       <h1 id='title'>BEER SELECTION</h1>
-  //       <table id='kegList'>
-  //         <tbody>
-  //           <tr id="tableHead">
-  //             <th>Name</th>
-  //             <th>Brewery</th>
-  //             <th>Price (16oz)</th>
-  //             <th>ABV</th>
-  //             <th>Origin</th>
-  //           </tr>
-  //           {this.renderTableData()}
-  //         </tbody>
-  //       </table>
-  //     </div>
-  //     {currentlyVisibleState}
-  //     </React.Fragment>
-  //   );
-  // }
 }
 
 export default KegControl;
