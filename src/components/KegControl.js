@@ -1,11 +1,14 @@
 import React from 'react';
 import NewKegForm from './KegFormControl/NewKegForm';
+import MainHeader from './MainHeader';
+import Beer from './KegDetails/Beer';
 
 class KegControl extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      showHomePage: true,
 
       kegList: [
         {
@@ -38,7 +41,7 @@ class KegControl extends React.Component {
         {
           name: "Dystopia IPA",
           brewery: "Grains of Wrath",
-          abv: "6.7%%",
+          abv: "6.7%",
           origin: "WA",
           pintPrice: 6, 
           kegLevel: 124,
@@ -89,20 +92,23 @@ class KegControl extends React.Component {
           kegLevel: 124,
           id: "7707709"
         },
-      ]
+      ], 
+      currentSelectedKeg: {}
     }
   }
 
-  // handleKegSelection = (id) => {
-  //   const selectedKeg = this.state.albumList.filter(album => album.id === id)[0];
-  //   this.setState({
-  //     currentSelectedKeg: selectedKeg,
-  //   })
-  // }
-
   handleAddingNewKegToList = (newKeg) => {
-    const newMasterKegList = this.state.kegList.concat(newKeg);
-    this.setState({kegList: newMasterKegList});
+    const newKegList = this.state.kegList.concat(newKeg);
+    this.setState({kegList: newKegList});
+    this.setState({showHomePage: true});
+  }
+
+  handleChangingSelectedKeg = (id) => {
+    const selectedKeg = this.state.kegList.filter(keg =>keg.id === id)[0];
+    this.setState({
+      currentSelectedKeg: selectedKeg,
+      showHomePage: true
+    });
   }
 
 
@@ -110,7 +116,7 @@ class KegControl extends React.Component {
     return this.state.kegList.map((keg, index) => {
       const { name, brewery, abv, origin, pintPrice, id } = keg
       return (
-        <tr key={id}>
+        <tr key={id} onClick={() => this.handleChangingSelectedKeg(id)}>
           <td>{name}</td>
           <td>{brewery}</td>
           <td>${pintPrice}</td>
@@ -121,44 +127,93 @@ class KegControl extends React.Component {
     })
   }
 
+  currentPage = () => {
+    if (this.state.showHomePage) {
+      return {
 
-  // currentPage = () => {
-  //   if(this.state.showHomePage) {
-  //     return{
-       
-  //     }
-  //   }
-  // }
+        header: <MainHeader/>,
+        main: 
+        <React.Fragment>
+          <main>
+            <h3 id='title'>BEER SELECTION</h3>
+            <table id='kegList'>
+            <tbody>
+              <tr id="tableHead">
+                <th>Name</th>
+                <th>Brewery</th>
+                <th>Price (16oz)</th>
+                <th>ABV</th>
+                <th>Origin</th>
+              </tr>
+              {this.renderTableData()}
+            </tbody>
+          </table>
+        </main>
+        </React.Fragment>,
+        sideBar: <Beer
+          beer = {this.state.currentSelectedKeg}/>,
+        footer: <NewKegForm 
+        onNewKegFormCreation = {this.handleAddingNewKegToList}/>
+      } 
+    } else {
+      return {
+        header: <MainHeader/>,
+        body: <Beer
+        beer={this.state.currentSelectedKeg}/>
+      }
+    }
+  };
 
   render() {
+    let currentPage = this.currentPage();
     return (
       <React.Fragment>
-      
-      <div className="menu">
-        <h1 id='title'>BEER SELECTION</h1>
-        <table id='kegList'>
-          <tbody>
-            <tr id="tableHead">
-              <th>Name</th>
-              <th>Brewery</th>
-              <th>Price (16oz)</th>
-              <th>ABV</th>
-              <th>Origin</th>
-            </tr>
-            {this.renderTableData()}
-          </tbody>
-        </table>
-      </div>
-      <NewKegForm 
-        onNewKegFormCreation={this.handleAddingNewKegToList}
-      />
+        <div className='wrapper'>
+          <div className='header'>
+            {currentPage.header}
+          </div>
+          <div className='main'>
+            {currentPage.main}
+          </div>
+          <div className='sidebar'>
+            {currentPage.sideBar}
+          </div>
+          <div className='footer'>
+            {currentPage.footer}
+          </div>
+        </div>
       </React.Fragment>
     )
   }
 
-
-
-
+  // render() {
+  //   let currentlyVisibleState = null;
+  //   if (this.state.showHomePage) {
+  //   currentlyVisibleState = <NewKegForm 
+  //   onNewKegFormCreation = {this.handleAddingNewKegToList}/>
+  //   }
+   
+  //   return (
+  //     <React.Fragment>
+  //     <div className="menu">
+  //       <h1 id='title'>BEER SELECTION</h1>
+  //       <table id='kegList'>
+  //         <tbody>
+  //           <tr id="tableHead">
+  //             <th>Name</th>
+  //             <th>Brewery</th>
+  //             <th>Price (16oz)</th>
+  //             <th>ABV</th>
+  //             <th>Origin</th>
+  //           </tr>
+  //           {this.renderTableData()}
+  //         </tbody>
+  //       </table>
+  //     </div>
+  //     {currentlyVisibleState}
+  //     </React.Fragment>
+  //   );
+  // }
 }
 
 export default KegControl;
