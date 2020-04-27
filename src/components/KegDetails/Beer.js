@@ -14,15 +14,12 @@ const Beer = (props) => {
     }
     props.onNewSalesReport({
       pintsSold: newLevel,
-      id: props.beer.id, 
-      
-   
+      id: props.beer.id 
     })
   }
  
   return (
   <React.Fragment>
-
     <div>
       <h3>Beer Details:</h3>
       <p><em>Click on a menu item to view details and make sales reports: </em></p>
@@ -42,7 +39,6 @@ const Beer = (props) => {
       <button type='submit'>Report</button>
     </form>
   </React.Fragment>
-    
   )
 }
 

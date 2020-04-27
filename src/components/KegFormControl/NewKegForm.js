@@ -17,8 +17,8 @@ function NewKegForm(props) {
     })
   }
 
-    return (
-      <React.Fragment>
+  return (
+    <React.Fragment>
       <footer>
         <h3>Add A New Keg:</h3>
         <form onSubmit={ handleNewKegFormSubmission }>
