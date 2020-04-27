@@ -124,7 +124,12 @@ class KegControl extends React.Component {
   }
 
   renderTableData() {
-    return this.state.kegList.map((keg, index) => {
+    const sortedKegs = this.state.kegList.sort(function(a, b) {
+      var textA = a.name.toUpperCase();
+      var textB = b.name.toUpperCase();
+      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    });
+    return sortedKegs.map((keg, index) => {
       const { name, brewery, abv, origin, pintPrice, id } = keg
       return (
         <tr key={id} onClick={() => this.handleChangingSelectedKeg(id)}>
