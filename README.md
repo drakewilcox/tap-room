@@ -4,12 +4,20 @@
 
 #### _**Drake Wilcox**_
 
+## User Stories: 
+
+* A user should be able to see a list/menu of all available kegs, and see the name, brewery, abv, origin, and pint-price. 
+* A user should be able to click on a keg and see the details for that keg. 
+* A user should be able to see how many pints are left in a keg on from details section. 
+* A user should be able to report sales and see the keg level descrease. The level should never go below zero. 
+* When a keg is empty, the keg level should update to "Out of Stock". 
+
 ## Design and Development
 
 #### WIREFRAME DESIGN:
-![WireFrame design](./TapRoomWireFrame.png)
+![WireFrame design](./WireFrame.png)
 #### COMPONENT TREE: 
-![component tree image](TapRoomComponentsFlow.png)
+![component tree image](./ComponentFlow.png)
 
 ## Setup/Installation Requirements
 
