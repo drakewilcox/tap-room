@@ -1,14 +1,15 @@
 import React from "react";
-import MainHeader from "./MainHeader";
+// import MainHeader from "./MainHeader";
 import KegControl from "./KegControl";
 import '../App.css';
 
 function App(){
   return (
     <React.Fragment>
-      <MainHeader />
+      {/* <MainHeader /> */}
       <KegControl />
     </React.Fragment>
+  
   );
 }
 
